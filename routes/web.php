@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('site.layouts.home');
+    return view('site.home');
 });
 
 // Route::get('/dashboard', function () {
@@ -32,4 +32,4 @@ Route::prefix('/admin')->middleware(['auth'])->group(function () {
     Route::get('/products', [DashboardController::class, 'index']);
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
