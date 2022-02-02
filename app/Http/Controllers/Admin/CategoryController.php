@@ -6,11 +6,19 @@ use App\Enums\MainCategory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
+use App\Interfaces\ICategoryRepository;
 use Illuminate\Http\Request;
+
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 
 class CategoryController extends Controller
 {
+    protected $categoryRepo;
+
+    public function __construct(ICategoryRepository $categoryRepo)
+    {
+        $this->categoryRepo = $categoryRepo;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +27,7 @@ class CategoryController extends Controller
     public function index()
     {
         //dd('hello');
-      
+        $data['category_list'] = $this->categoryRepo->get();
         return view('admin.categories.index');
     }
     /**
@@ -46,7 +54,7 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->main_category_id = $request->main_category_id;
         $category->save();
-       // flash('Successfully Created')->success();
+       flash('Successfully Created')->success();
         return redirect('/admin/categories');
     }
 
@@ -69,7 +77,16 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        if(!$category){
+            flash('No item Found')->error();
+            return redirect('/admin/categories');
+        }
+        $data["$category"] = $category; 
+        $data["main_category"] = MainCategory
+        ::asSelectArray();
+        return view('admin.categories.edit', $data);
+    
     }
 
     /**

@@ -1,5 +1,8 @@
 <?php
 
+use App\Providers\RepositoryServiceProvider;
+use Illuminate\Cache\Repository;
+
 return [
 
     /*
@@ -161,6 +164,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        App\Providers\RepositoryServiceProvider::class,
 
         /*
          * Package Service Providers...

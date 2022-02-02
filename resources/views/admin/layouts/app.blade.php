@@ -211,7 +211,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
-              {{-- @include('flash::message'); --}}
+              @include('flash::message');
                 @yield('page_title')
             </div><!-- /.container-fluid -->
         </section>

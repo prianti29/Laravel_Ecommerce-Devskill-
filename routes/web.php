@@ -28,7 +28,7 @@ Route::get('/', function () {
 
 
 
-Route::prefix('/admin')->middleware(['auth', OnlyAdmin::class])->group(function () {
+Route::prefix('/admin')->middleware(['auth', OnlyAdmin::class, 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::resource('/categories', CategoryController::class);
     Route::get('/products', [DashboardController::class, 'index']);

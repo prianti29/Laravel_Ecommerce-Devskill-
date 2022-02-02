@@ -14,7 +14,6 @@ final class MainCategory extends Enum
     const MensWear =   0;
     const WomensWear =   1;
     const Electronics = 2;
-
     public static function getDescription($value): string
     {
         if ($value === self::MensWear) {
@@ -22,7 +21,6 @@ final class MainCategory extends Enum
         }else if ($value === self::WomensWear) {
             return "Women's Wear";
         }
-
         return parent::getDescription($value);
     }
 }

@@ -12,26 +12,17 @@
     </div>
 </div>
 @endsection
-
 @section('content')
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Category List</h3>
-
         <div class="card-tools">
-            {{-- <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                <i class="fas fa-minus"></i>
-            </button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                <i class="fas fa-times"></i>
-            </button> --}}
             <a class="btn btn-success pull-right" href="{{ url('/admin/categories/create') }}">Add New Category</a>
         </div>
     </div>
     <div class="card-body">
-        <table>
-
-        </table>
+      <table>
+      </table>  
     </div>
     <!-- /.card-body -->
     {{-- <div class="card-footer">
@@ -39,5 +30,4 @@
     </div> --}}
     <!-- /.card-footer-->
 </div>
-    
 @endsection
