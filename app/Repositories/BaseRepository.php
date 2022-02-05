@@ -20,7 +20,13 @@ class BaseRepository implements IBaseRepository
     }
     public function find($id)
     {
-        return $this->model->find($id);
+       $data=  $this->model->find($id);
+       if(!$data){
+        flash('No item Found')->error();
+        return null;
+       }else{
+           return $data;
+       }
     }
     public function delete($id)
     {
@@ -29,7 +35,9 @@ class BaseRepository implements IBaseRepository
             flash('No item Found')->error();
             return redirect('/admin/categories');
         } else {
-            $data->delete();
+            flash('Successfully Deleted')->error();
+            return redirect('/admin/categories');
+            $data->success();
         }
     }
 }
