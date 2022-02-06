@@ -5,15 +5,20 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Admin\IProductRepo;
+use App\Http\Requests\ProductRequest;
+use App\Interfaces\ICategoryRepository;
 use App\Interfaces\IProductRepository;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
     protected $productRepo;
+    protected $categoryRepo;
 
-    public function __construct(IProductRepository $productRepo)
+    public function __construct(IProductRepository $productRepo,ICategoryRepository $categoryRepo)
     {
         $this->productRepo = $productRepo;
+        $this->categoryRepo = $categoryRepo;
     }
     /**
      * Display a listing of the resource.
@@ -32,7 +37,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view("admin.products.create");
+        $data["categories"] = $this->categoryRepo->get();
+        return view("admin.products.create",$data);
     }
 
     /**
@@ -41,7 +47,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
         //
     }
