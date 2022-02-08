@@ -25,23 +25,18 @@
                 @csrf
     {{-- Product name --}}
     <div class="form-group">
-        <label for="exampleInputEmail1">Product Name</label>
+        <label for="exampleInputEmail1">Product Name</label> 
         <input type="text" name="name" value="{{ old('name') }}" class="form-control" placeholder="Enter Product Name">
     </div>
    {{-- Category id --}}
     <div class="form-group">
-        <label for="exampleInputEmail1">Product Name</label>
+        <label for="exampleInputEmail1">Product Category</label>
         <select name="category_id" class="form-control">
             @foreach ($categories as $item)
                 <option value="{{ $item->id }}">{{ $item->name }}</option>
             @endforeach
         </select>
-      
     </div>
-
-
-
-
     {{-- Product Price --}}
     <div class="form-group">
         <label for="exampleInputEmail1">Product Price</label>
