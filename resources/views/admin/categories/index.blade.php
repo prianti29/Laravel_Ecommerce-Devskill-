@@ -25,7 +25,6 @@
                 <i class="fas fa-times"></i>
             </button> --}}
             <a class="btn btn-success pull-right" href="{{ url('/admin/categories/create') }}">Add New Category</a>
-
         </div>
     </div>
     <div class="card-body">
@@ -39,7 +38,11 @@
                 <td>{{ $item->name }}</td>
                 <td>{{ App\Enums\MainCategory::getDescription($item->main_category_id) }}</td>
                 <td>
-
+                    @foreach ($item->products() as $p)
+                        {{ $p->name }}
+                    @endforeach
+                </td>
+                <td>
                     <a href="{{ url("/admin/categories/$item->id/edit") }}" class="btn btn-info">Edit</a>
                     {{-- <a href="{{ route('categories.edit', ['category'=>$item->id]) }}" class="btn btn-info">Edit</a> --}}
                     <form action="{{ url("/admin/categories/$item->id") }}" method="post" style="display:inline"
@@ -48,7 +51,6 @@
                         @method("delete")
                         <input type="submit" class="btn btn-info" value="Delete">
                     </form>
-
                 </td>
             </tr>
             @endforeach

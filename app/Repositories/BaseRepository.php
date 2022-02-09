@@ -30,14 +30,13 @@ class BaseRepository implements IBaseRepository
     }
     public function delete($id)
     {
+      //  dd('hello');
         $data = $this->model->find($id);
         if (!$data) {
             flash('No item Found')->error();
-            return redirect('/admin/categories');
         } else {
-            flash('Successfully Deleted')->error();
-            return redirect('/admin/categories');
-            $data->success();
+            flash('Successfully Deleted')->success();
+            $data->delete();
         }
     }
 }

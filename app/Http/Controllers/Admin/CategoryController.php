@@ -26,7 +26,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data["category_list"] = $this->categoryRepo->get();
+        // $data["category_list"] = $this->categoryRepo->GetCategoryListWithProducts();
+        $data["category_list"] = Category::with("products")->get();
         return view('admin.categories.index', $data);
     }
     /**

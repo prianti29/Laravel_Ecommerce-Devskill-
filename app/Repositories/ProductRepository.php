@@ -31,6 +31,13 @@ class ProductRepository extends BaseRepository implements IProductRepository
         $product->category_id = $request->category_id;
         $product->featured_image = $path;
         $product->save();
+        if($request->hasfile('images')){
+          foreach ($request->file('images') as $image) {
+            $path = $image->store('products_images', 'public');
+          }
+        }else{
+          $path = null;
+        }
         flash('Successfully Added')->success();
       } catch (\Throwable $th) {
         flash("Something Went wrong")->error();

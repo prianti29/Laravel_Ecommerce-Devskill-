@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Repositories;
 
 use App\Interfaces\ICategoryRepository;
 use App\Models\Category;
-
+use App\Models\Product;
 class CategoryRepository extends BaseRepository implements ICategoryRepository
 {
     public function __construct(Category $model)
@@ -30,4 +29,8 @@ class CategoryRepository extends BaseRepository implements ICategoryRepository
         flash('Successfully Updated')->success();
         return true;
     }
+    public function GetCategoryListWithProducts(){
+        return Category::with ('products')->get();
+    }
+
 }
