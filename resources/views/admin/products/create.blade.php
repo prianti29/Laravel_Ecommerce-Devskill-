@@ -68,10 +68,9 @@
     </div>
 
     {{-- Images --}}
-
     <div class="form-group">
-        <label for="exampleInputEmail1"> Images</label>
-        <input type="file" name="images" multiple>
+        <label for="exampleInputEmail1">Images</label>
+        <input type="file" name="images[]" multiple>
     </div>
     <!-- /.card-body -->
     <div class="card-footer">
