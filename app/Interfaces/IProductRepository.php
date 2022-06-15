@@ -9,6 +9,6 @@ interface IProductRepository extends IBaseRepository
 
     public function GetLatestProductList();
     public function GetSpecialProductList();
-    //public function GetRandomProductList();
+  
 
 }
